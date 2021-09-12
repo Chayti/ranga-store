@@ -30,15 +30,19 @@ const showProducts = (products) => {
 
 let count = 0;
 const addToCart = (id, price) => {
+
   count = count + 1;
   updatePrice("price", price);
 
   updateTaxAndCharge();
   document.getElementById("total-Products").innerText = count;
+
+  updateTotal();
 };
 
 const getInputValue = (id) => {
   const element = document.getElementById(id).innerText;
+  console.log(id, element);
   const converted = parseInt(element);
   return converted;
 };
