@@ -2,29 +2,39 @@ body {
   overflow-x: hidden;
   font-family: "Montserrat", sans-serif;
 }
-.search-field {
-  border: none;
-  border-radius: 50px;
-  padding: 5px;
-  outline: none;
-}
-.search-field:hover {
-  outline: none;
-  border: none;
-}
+
+/* search */
 .search-box {
-  border: 1px solid rgb(3, 118, 211);
+  border: 1px solid rgba(0, 128, 128, 0.89);
   width: 281px;
   border-radius: 5px;
   margin: auto;
   margin-top: 50px;
   border-right: none;
+  display: flex;
+  justify-content: space-between;
 }
+.search-field {
+  border: none;
+  border-radius: 50px;
+  padding: 5px;
+  outline: none;
+  width: 100%;
+}
+.search-field:hover {
+  outline: none;
+  border: none;
+}
+
 .search-button {
+  background-color: rgba(0, 128, 128, 0.74);
+  color: azure;
   padding: 10px 50px;
   border-radius: 25px;
-  margin-left: 20px;
+  /* margin-left: 20px; */
 }
+
+/* products */
 #all-products {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -48,6 +58,8 @@ body {
   width: 150px;
   height: 150px;
 }
+
+/* cart */
 .cart {
   width: 350px;
   /* border: 1px solid green; */
@@ -60,6 +72,8 @@ body {
 .cart-main {
   padding-right: 30px;
 }
+
+/* media query */
 @media only screen and (max-width: 768px) {
   #all-products {
     display: grid;
@@ -78,6 +92,7 @@ body {
     padding-right: 10px;
   }
 }
+
 @media only screen and (max-width: 468px) {
   #all-products {
     display: grid;
