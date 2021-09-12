@@ -4,6 +4,7 @@ const loadProducts = () => {
     .then((response) => response.json())
     .then((data) => showProducts(data));
 };
+
 loadProducts();
 
 // show all product in UI 
@@ -26,6 +27,7 @@ const showProducts = (products) => {
     document.getElementById("all-products").appendChild(div);
   }
 };
+
 let count = 0;
 const addToCart = (id, price) => {
   count = count + 1;
