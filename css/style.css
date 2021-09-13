@@ -100,6 +100,20 @@ body {
   padding-right: 30px;
 }
 
+/*single product details */
+.product-detail{
+  border: 3px solid rgba(95, 158, 160, 0.856);
+  border-radius: 15px;
+  background-color: azure;
+  margin: 0 10% 3% 10%;
+  padding: 3%;
+}
+.single-product-title{
+  color: teal;
+  font-weight: bold;
+}
+
+
 /* media query */
 @media only screen and (max-width: 768px) {
   #all-products {

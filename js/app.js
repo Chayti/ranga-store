@@ -11,8 +11,6 @@ loadProductsInitially();
 // fetching products on search
 const loadProducts = () => {
 
-  document.getElementById('all-products').textContent = " ";
-
   const inputFieldText = document.getElementById('input-field').value;
   if (inputFieldText) {
     const url = `https://fakestoreapi.com/products/category/${inputFieldText}`;
@@ -20,10 +18,14 @@ const loadProducts = () => {
     fetch(url)
       .then((response) => response.json())
       .then((data) => showProducts(data));
+
+    document.getElementById('all-products').textContent = " ";
+    document.getElementById('product-details').textContent = " ";
   }
   else {
     alert("Please fill the search box");
   }
+
   document.getElementById('input-field').value = "";
 };
 
@@ -54,8 +56,8 @@ const showProducts = (products) => {
       
       <h2>Price: $ ${product.price}</h2>
       
-      <button onclick="addToCart(${product.id},${product.price})" id="addToCart-btn" class="buy-now btn" style="background-color:teal; color:azure;">Add to Cart</button>
-      <button id="details-btn" class="btn btn-warning">Details</button>
+      <button onclick="addToCart(${product.id},${product.price})" id="addToCart-btn" class="btn" style="background-color:teal; color:azure;">Add to Cart</button>
+      <button onclick="showDetails('${product.title}','${product.description}')" id="details-btn" class="btn btn-warning">Details</button>
 
     </div>
       `;
@@ -87,7 +89,7 @@ const updatePrice = (id, value) => {
   const convertedOldPrice = getInputValue(id);
   const convertedPrice = value;
   const total = +convertedOldPrice + convertedPrice;
-  document.getElementById(id).innerText = total;
+  document.getElementById(id).innerText = total.toFixed(2);
 };
 
 // set innerText function
@@ -120,3 +122,25 @@ const updateTotal = () => {
     +getInputValue("total-tax");
   document.getElementById("total").innerText = parseFloat(grandTotal).toFixed(2);
 };
+
+// show details of products
+const showDetails = (productTitle, productDetail) => {
+
+  document.getElementById('product-details').textContent = " ";
+
+  const div = document.createElement("div");
+  div.classList.add("product-detail");
+
+  div.innerHTML = `
+      
+      <div>
+        <h3 class="single-product-title">${productTitle}</h3>
+      </div>
+
+      <div>
+        <p>${productDetail}</p>
+      </div>
+
+      `;
+  document.getElementById("product-details").appendChild(div);
+}
