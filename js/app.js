@@ -34,6 +34,7 @@ const showProducts = (products) => {
 
   const allProducts = products.map((pd) => pd);
   for (const product of allProducts) {
+
     const productImage = product.image;
 
     const div = document.createElement("div");
@@ -57,7 +58,7 @@ const showProducts = (products) => {
       <h2>Price: $ ${product.price}</h2>
       
       <button onclick="addToCart(${product.id},${product.price})" id="addToCart-btn" class="btn" style="background-color:teal; color:azure;">Add to Cart</button>
-      <button onclick="showDetails('${product.title}','${product.description}')" id="details-btn" class="btn btn-warning">Details</button>
+      <button onclick="fetchDetails(${product.id})" id="details-btn" class="btn btn-warning">Details</button>
 
     </div>
       `;
@@ -123,8 +124,17 @@ const updateTotal = () => {
   document.getElementById("total").innerText = parseFloat(grandTotal).toFixed(2);
 };
 
+// fetch details
+const fetchDetails = (id) => {
+  const url = `https://fakestoreapi.com/products/${id}`;
+  fetch(url)
+    .then((response) => response.json())
+    .then((data) => showDetails(data));
+}
+
 // show details of products
-const showDetails = (productTitle, productDetail) => {
+const showDetails = (product) => {
+  console.log(product);
 
   document.getElementById('product-details').textContent = " ";
 
@@ -132,13 +142,13 @@ const showDetails = (productTitle, productDetail) => {
   div.classList.add("product-detail");
 
   div.innerHTML = `
-      
+
       <div>
-        <h3 class="single-product-title">${productTitle}</h3>
+        <h3 class="single-product-title">${product.title}</h3>
       </div>
 
       <div>
-        <p>${productDetail}</p>
+        <p>${product.description}</p>
       </div>
 
       `;
