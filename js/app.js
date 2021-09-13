@@ -16,7 +16,7 @@ const loadProducts = () => {
   const inputFieldText = document.getElementById('input-field').value;
   if (inputFieldText) {
     const url = `https://fakestoreapi.com/products/category/${inputFieldText}`;
-    console.log(url);
+    // console.log(url);
     fetch(url)
       .then((response) => response.json())
       .then((data) => showProducts(data));
@@ -46,15 +46,15 @@ const fetchDetails = (id) => {
 // show all product in UI 
 const showProducts = (products) => {
 
-  const allProducts = products.map((pd) => pd);
-  for (const product of allProducts) {
+  if (products.length > 0) {
+    const allProducts = products.map((pd) => pd);
+    for (const product of allProducts) {
 
-    const productImage = product.image;
+      const productImage = product.image;
 
-    const div = document.createElement("div");
-    div.classList.add("product");
-
-    div.innerHTML = `
+      const div = document.createElement("div");
+      div.classList.add("product");
+      div.innerHTML = `
     <div class="single-product">
       
     <div>
@@ -76,6 +76,14 @@ const showProducts = (products) => {
 
     </div>
       `;
+      document.getElementById("all-products").appendChild(div);
+    }
+  }
+  else {
+    const div = document.createElement("div");
+    div.innerHTML = `
+      <h2 class="text-primary text-center">No result found</h2>
+    `;
     document.getElementById("all-products").appendChild(div);
   }
 };
