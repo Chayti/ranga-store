@@ -8,6 +8,8 @@ const loadProductsInitially = () => {
 
 loadProductsInitially();
 
+
+
 // fetching products on search
 const loadProducts = () => {
 
@@ -28,6 +30,18 @@ const loadProducts = () => {
 
   document.getElementById('input-field').value = "";
 };
+
+
+
+// fetch details
+const fetchDetails = (id) => {
+  const url = `https://fakestoreapi.com/products/${id}`;
+  fetch(url)
+    .then((response) => response.json())
+    .then((data) => showDetails(data));
+}
+
+
 
 // show all product in UI 
 const showProducts = (products) => {
@@ -65,6 +79,9 @@ const showProducts = (products) => {
     document.getElementById("all-products").appendChild(div);
   }
 };
+
+
+
 
 //add to cart
 let numOfProductsAddedToCart = 0;
@@ -124,17 +141,8 @@ const updateTotal = () => {
   document.getElementById("total").innerText = parseFloat(grandTotal).toFixed(2);
 };
 
-// fetch details
-const fetchDetails = (id) => {
-  const url = `https://fakestoreapi.com/products/${id}`;
-  fetch(url)
-    .then((response) => response.json())
-    .then((data) => showDetails(data));
-}
-
 // show details of products
 const showDetails = (product) => {
-  console.log(product);
 
   document.getElementById('product-details').textContent = " ";
 
