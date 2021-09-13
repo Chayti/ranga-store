@@ -12,7 +12,7 @@ const showProducts = (products) => {
 
   const allProducts = products.map((pd) => pd);
   for (const product of allProducts) {
-    const image = product.image;
+    const productImage = product.image;
 
     const div = document.createElement("div");
     div.classList.add("product");
@@ -21,7 +21,7 @@ const showProducts = (products) => {
     <div class="single-product">
       
     <div>
-        <img class="product-image" src=${image}></img>
+        <img class="product-image" src=${productImage}></img>
       </div>
       
       <div class="title-box">
@@ -41,14 +41,15 @@ const showProducts = (products) => {
   }
 };
 
-let count = 0;
+//add to cart
+let numOfProductsAddedToCart = 0;
 const addToCart = (id, price) => {
 
-  count = count + 1;
+  numOfProductsAddedToCart++;
   updatePrice("price", price);
 
   updateTaxAndCharge();
-  document.getElementById("total-Products").innerText = count;
+  document.getElementById("total-Products").innerText = numOfProductsAddedToCart;
 
   updateTotal();
 };
