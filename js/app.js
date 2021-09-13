@@ -1,11 +1,31 @@
-const loadProducts = () => {
+// fetching products initially
+const loadProductsInitially = () => {
   const url = `https://fakestoreapi.com/products`;
   fetch(url)
     .then((response) => response.json())
     .then((data) => showProducts(data));
 };
 
-loadProducts();
+loadProductsInitially();
+
+// fetching products on search
+const loadProducts = () => {
+
+  document.getElementById('all-products').textContent = " ";
+
+  const inputFieldText = document.getElementById('input-field').value;
+  if (inputFieldText) {
+    const url = `https://fakestoreapi.com/products/category/${inputFieldText}`;
+    console.log(url);
+    fetch(url)
+      .then((response) => response.json())
+      .then((data) => showProducts(data));
+  }
+  else {
+    alert("Please fill the search box");
+  }
+  document.getElementById('input-field').value = "";
+};
 
 // show all product in UI 
 const showProducts = (products) => {
