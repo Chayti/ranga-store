@@ -47,15 +47,35 @@ body {
   justify-content: center;
 }
 .single-product {
-  padding: 10px;
+  padding: 20px;
+  margin: 3%;
   transition: 0.6s;
+  background-color: whitesmoke;
+  border-radius: 10px;
 }
 .single-product:hover {
   box-shadow: 4px 4px 7px gray;
   border-radius: 10px;
-  border: 1px solid cyan;
+  border: 1px solid rgba(21, 231, 231, 0.774);
+}
+.title-box{
+    display: block;
+    width: 280px;
+}
+.product-title{
+  white-space: nowrap;
+  min-width: 0;
+  color: teal;
+  font-weight: bold;
+  font-size: 20px;
+  /* height:45px;  */
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .product-image {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border-radius: 10px;
   width: 150px;
   height: 150px;
 }
