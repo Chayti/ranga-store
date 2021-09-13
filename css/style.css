@@ -58,9 +58,16 @@ body {
   border-radius: 10px;
   border: 1px solid rgba(21, 231, 231, 0.774);
 }
+.product-image {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border-radius: 10px;
+  width: 150px;
+  height: 150px;
+}
 .title-box{
-    display: block;
-    width: 280px;
+  display: block;
+  width: 280px;
 }
 .product-title{
   white-space: nowrap;
@@ -72,12 +79,11 @@ body {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.product-image {
-  margin-top: 5px;
-  margin-bottom: 5px;
-  border-radius: 10px;
-  width: 150px;
-  height: 150px;
+
+.total-review{
+  color:teal; 
+  text-decoration:underline; 
+  margin-bottom:0;
 }
 
 /* cart */

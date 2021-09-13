@@ -29,6 +29,8 @@ const showProducts = (products) => {
       </div>
       
       <p>Category: ${product.category}</p>
+      <p class="total-review"><a href="#">${product.rating.count} Reviews</a></p>
+      <p class="text-warning">${product.rating.rate}</p>
       
       <h2>Price: $ ${product.price}</h2>
       
@@ -43,10 +45,10 @@ const showProducts = (products) => {
 
 //add to cart
 let numOfProductsAddedToCart = 0;
-const addToCart = (id, price) => {
+const addToCart = (id, productPrice) => {
 
   numOfProductsAddedToCart++;
-  updatePrice("price", price);
+  updatePrice("price", productPrice);
 
   updateTaxAndCharge();
   document.getElementById("total-Products").innerText = numOfProductsAddedToCart;
@@ -63,9 +65,8 @@ const getInputValue = (id) => {
 // main price update function
 const updatePrice = (id, value) => {
   const convertedOldPrice = getInputValue(id);
-  const convertPrice = value;
-  const total = +convertedOldPrice + convertPrice;
-  // console.log(convertedOldPrice, convertPrice);
+  const convertedPrice = value;
+  const total = +convertedOldPrice + convertedPrice;
   document.getElementById(id).innerText = total;
 };
 
