@@ -141,6 +141,12 @@ const updateTotal = () => {
   document.getElementById("total").innerText = parseFloat(grandTotal).toFixed(2);
 };
 
+// buy now btn functionality
+const buyProducts = () => {
+  location.assign('https://www.amazon.com/');
+}
+
+
 // show details of products
 const showDetails = (product) => {
 
